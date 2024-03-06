@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Rechner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #80d566;
+    }
+    .calculator {
+      text-align: center;
+    }
+    button {
+      margin: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="calculator">
+  <input type="number" id="number1" placeholder="Zahl 1">
+  <input type="number" id="number2" placeholder="Zahl 2">
+  <br>
+  <button onclick="calculate('+')">Addition</button>
+  <button onclick="calculate('-')">Subtraktion</button>
+  <button onclick="calculate('*')">Multiplikation</button>
+  <button onclick="calculate('/')">Division</button>
+  <p id="result"></p>
+</div>
+
+<script>
+  function calculate(operation) {
+    var num1 = parseFloat(document.getElementById('number1').value);
+    var num2 = parseFloat(document.getElementById('number2').value);
+    var result;
+
+    switch (operation) {
+      case '+':
+        result = num1 + num2;
+        break;
+      case '-':
+        result = num1 - num2;
+        break;
+      case '*':
+        result = num1 * num2;
+        break;
+      case '/':
+        if(num2 !== 0) {
+          result = num1 / num2;
+        } else {
+          result = 'Division durch Null!';
+        }
+        break;
+      default:
+        result = 'Ungültige Operation';
+    }
+
+    document.getElementById('result').textContent = 'Ergebnis: ' + result;
+  }
+</script>
+</body>
+</html>
